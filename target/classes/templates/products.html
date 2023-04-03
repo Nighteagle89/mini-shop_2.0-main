@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products A-shop</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<div align="center">
+    <table border="1">
+        <h2>Продукты</h2>
+        <br>
+        <tr>
+            <td>Навзание</td>
+            <td>Цена</td>
+            <td>Кол-во</td>
+        </tr>
+        <div>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.title}">Testerka</td>
+                <td th:text="${product.price}">777.0</td>
+                <td th:text="${product.amount}">-1</td>
+                <td><a th:href="@{/cart/{product_id}(product_id=${product.id})}">Добавить в корзину</a></td>
+                <td sec:authorize="hasAnyAuthority('ADMIN','MANAGER')">
+                    <a th:href="@{/products/delete/{id}(id=${product.id})}">Удалить</a>
+                </td>
+                <td sec:authorize="hasAnyAuthority('ADMIN','MANAGER')">
+                    <a th:href="@{/products/update/{id}(id=${product.id})}">Изменить</a>
+                </td>
+            </tr>
+        </div>
+    </table>
+</div>
+</body>
+</html>

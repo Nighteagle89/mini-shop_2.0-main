@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu A-shop</title>
+</head>
+<body>
+
+  <table id="nav-menu" width="100%">
+    <tr>
+      <td>
+      <table>
+        <tr>
+            <td><a th:href="@{/}"> Главная </a></td>
+            <td sec:authorize="isAuthenticated()"><a th:href="@{/products}">| Продукты </a></td>
+            <td><a th:href="@{/login}">| Вход </a></td>
+            <td sec:authorize="isAuthenticated()"><a th:href="@{/cart}">| Корзина  </a></td>
+            <td sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')"> <a th:href="@{/products/create}">| Добавить продукт</a></td>
+            <td sec:authorize="hasAnyAuthority('ADMIN')"><a th:href="@{/users}">| Пользователи</a></td>
+        </tr>
+      </table>
+      </td>
+      <td align="center">
+        <div sec:authorize="isAuthenticated()">
+          <div>
+            Hello, <a th:href="@{/users/profile}"><span sec:authentication="principal.username">Tester</span></a>
+          </div>
+          <div>
+            <a th:href="@{/logout}">Выйти</a>
+          </div>
+        </div>
+
+        <div sec:authorize="!isAuthenticated()">
+          <div>
+            Войдите в свой <a th:href="@{/login}">аккаунт</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

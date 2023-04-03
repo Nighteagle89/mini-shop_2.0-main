@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration A-Shop</title>
+</head>
+<body>
+<div align="center">
+    <form th:action="@{/reg/create}" th:object="${user}" method="post">
+        <h2>Регистрация</h2>
+        <table align="center" border="1">
+            <tr>
+                <td>Ваше имя</td>
+                <td><input type="text" th:field="*{username}"/></td>
+
+            </tr>
+            <tr border="1">
+                <td>Email</td>
+                <td><input type="text" th:field="*{email}"></td>
+            </tr>
+            <tr border="1">
+                <td>Ваш пароль</td>
+                <td><input type="password" th:field="*{password}"></td>
+            </tr>
+            <tr>
+                <td>Повторите пароль</td>
+                <td><input type="password" th:field="*{matchingPassword}"></td>
+            </tr>
+            <tr>
+                <td>Телефон</td>
+                <td><input type="tel" th:field="*{number}"></td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+</div>
+</body>
+</html>

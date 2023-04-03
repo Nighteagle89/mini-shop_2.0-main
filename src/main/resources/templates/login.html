@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.w3.org/1999/xhtml">
+    <title>Login A-shop</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+
+<p th:if="${loginError}" class="error">Неверное Имя или неверный пароль</p>
+<div class="login">
+    <form th:action="@{/auth}" method="post">
+        <table>
+            <tr>
+                <td>Ваше Имя</td>
+                <td>
+                    <input type="text" name="username" placeholder="your username">
+                </td>
+            </tr>
+            <tr>
+                <td>Пароль</td>
+                <td><input type="password" name="password" placeholder="password"></td>
+            </tr>
+        </table>
+        <button type="submit">Вход</button>
+    </form>
+</div>
+<div class="reg">
+    <p><a th:href="@{/reg/create}">Регистрация</a></p>
+</div>
+</body>
+</html>

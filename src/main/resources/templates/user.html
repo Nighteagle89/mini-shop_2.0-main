@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create user A-Shop</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<div class="create_user" align="center">
+    <h2>Добавление нового пользователя</h2>
+    <form th:action="@{/users/new}" th:object="${user}" method="post">
+        <table border="1">
+            <tr border="1">
+                <td>Введите имя</td>
+                <td><input type="text" th:field="*{username}"></td>
+            </tr>
+            <tr border="1">
+                <td>Email</td>
+                <td><input type="text" th:field="*{email}"></td>
+            </tr>
+            <tr border="1">
+                <td>Ваш пароль</td>
+                <td><input type="password" th:field="*{password}"></td>
+            </tr>
+            <tr>
+                <td>Повторите пароль</td>
+                <td><input type="password" th:field="*{matchingPassword}"></td>
+            </tr>
+            <tr>
+                <td>Номер телефона</td>
+                <td><input type="tel" th:field="*{number}"></td>
+            </tr>
+        </table>
+        <br>
+        <select th:field="*{role}">
+            <option value="0">Права доступа</option>
+            <option th:each="option : ${roles}" th:value="${option}" th:text="${option}"></option>
+        </select>
+        <br>
+        <br>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</div>
+</body>
+</html>

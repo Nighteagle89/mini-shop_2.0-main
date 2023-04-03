@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create product A-Shop</title>
+</head>
+<body>
+<div class="form_product" align="center">
+    <h2>Изменение продукта</h2>
+    <form th:action="@{/products/update}" th:object="${product}" method="post">
+        <div>
+            <table border="1">
+                <tr>
+                    <td>Название</td>
+                    <td><input type="text" th:field="*{title}"></td>
+                </tr>
+                <tr>
+                    <td>Кол-во</td>
+                    <td><input type="number" step="any" th:field="*{amount}"></td>
+                </tr>
+                <tr>
+                    <td>Цена</td>
+                    <td><input type="number" th:field="*{price}"></td>
+                </tr>
+            </table>
+            <br>
+            <button type="submit">Сохранить</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

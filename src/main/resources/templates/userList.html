@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User list</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<div align="center">
+    <h2>Список пользователей</h2>
+    <table border="1">
+        <tr>
+            <td>Ваше Имя</td>
+            <td>Email</td>
+        </tr>
+        <tr th:each="usr : ${users}">
+            <td th:text="${usr.getUsername()}">Testusername</td>
+            <td th:text="${usr.getEmail()}">Testemail</td>
+            <td><a th:href="@{/users/delete/{id}(id=${usr.id})}">Удалить</a></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <a th:href="@{/users/new}">Добавить пользователя</a>
+</div>
+</body>
+</html>
